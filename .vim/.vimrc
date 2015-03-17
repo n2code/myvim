@@ -39,8 +39,11 @@ else
   set term=xterm-256
   set t_Co=256
 endif
+syntax enable
 set background=dark
-colorscheme mustang " LET'S GET FUNKY!
+"colorscheme solarized
+colorscheme mustang
+"colorscheme gruvbox
 if has('mouse')
   set mouse=a
 endif
@@ -55,10 +58,10 @@ set number
 set ruler
 set showcmd
 set laststatus=2
-set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
+"set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
 
 " CODE
-syntax on
+"syntax on
 if has("autocmd")
   filetype plugin indent on
   augroup vimrcEx

@@ -26,6 +26,7 @@ set linebreak
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set whichwrap=b,s,<,>
 set so=7
+set nostartofline
 
 " SEARCH
 set hlsearch
@@ -71,7 +72,7 @@ if has("autocmd")
   filetype plugin indent on
   augroup vimrcEx
   au!
-  autocmd BufReadPost * " Remember cursor position 
+  autocmd BufReadPost * " Remember cursor position
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
@@ -95,5 +96,10 @@ set wildmenu
 set wildmode=longest:list,full
 nnoremap <BS> <ESC>:noh<RETURN><ESC>
 nnoremap <SPACE> <ESC>/
+map <F3> <ESC>:set wrap!<RETURN>
+nnoremap <LEFT> <ESC>:bp<RETURN>
+nnoremap <RIGHT> <ESC>:bn<RETURN>
+nnoremap <UP> <ESC><C-Y>
+nnoremap <DOWN> <ESC><C-E>
 
 " EOF :)

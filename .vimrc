@@ -89,14 +89,30 @@ function! GUIOptionsToggle()
     exec('set guioptions=i')
   endif
 endfunction
+function! FontAndBGToggle()
+  if &background=='dark'
+    if has("gui_running")
+      set guifont=Source\ Code\ Pro\ Medium:h12
+	endif
+	colorscheme solarized
+    set background=light
+  else
+    if has("gui_running")
+      set guifont=Source\ Code\ Pro\ Light:h12
+	endif
+    colorscheme mustang
+    set background=dark
+  endif
+endfunction
 inoremap jk <Esc>
 map <F1> <Esc>:call GUIOptionsToggle()<cr>
 map <F2> <ESC>:NERDTreeToggle<RETURN>
+map <F3> <ESC>:set wrap!<RETURN>
+map <F4> <Esc>:call FontAndBGToggle()<cr>
 set wildmenu
 set wildmode=longest:list,full
 nnoremap <BS> <ESC>:noh<RETURN><ESC>
 nnoremap <SPACE> <ESC>/
-map <F3> <ESC>:set wrap!<RETURN>
 nnoremap <LEFT> <ESC>:bp<RETURN>
 nnoremap <RIGHT> <ESC>:bn<RETURN>
 nnoremap <UP> <ESC><C-Y>

@@ -92,7 +92,7 @@ endfunction
 function! FontAndBGToggle()
   if &background=='dark'
     if has("gui_running")
-      set guifont=Source\ Code\ Pro\ Medium:h12
+      set guifont=Source\ Code\ Pro\ Semibold:h12
 	endif
 	colorscheme solarized
     set background=light
@@ -106,13 +106,14 @@ function! FontAndBGToggle()
 endfunction
 inoremap jk <Esc>
 map <F1> <Esc>:call GUIOptionsToggle()<cr>
-map <F2> <ESC>:NERDTreeToggle<RETURN>
+map <F2> <Esc>:call FontAndBGToggle()<cr>
 map <F3> <ESC>:set wrap!<RETURN>
-map <F4> <Esc>:call FontAndBGToggle()<cr>
+map <F5> <ESC>:NERDTreeToggle<RETURN>
 set wildmenu
 set wildmode=longest:list,full
 nnoremap <BS> <ESC>:noh<RETURN><ESC>
-nnoremap <SPACE> <ESC>/
+nnoremap <TAB> <ESC>:CtrlPBuffer<RETURN>
+nnoremap <SPACE> <ESC>:CtrlPBufTagAll<RETURN>
 nnoremap <LEFT> <ESC>:bp<RETURN>
 nnoremap <RIGHT> <ESC>:bn<RETURN>
 nnoremap <UP> <ESC><C-Y>

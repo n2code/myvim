@@ -26,7 +26,6 @@ set linebreak
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set whichwrap=b,s,<,>
 set so=7
-set nostartofline
 
 " SEARCH
 set hlsearch
@@ -65,6 +64,14 @@ set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"
 set cursorline
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+
+" AIRLINE PLUGIN EXTRAS
+let g:airline_detect_paste=1
+let g:airline_inactive_collapse=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#show_buffers=1
+let g:airline#extensions#tabline#show_tabs=1
+let g:airline#extensions#tabline#show_tab_type=1
 
 " CODE
 "syntax on

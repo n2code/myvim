@@ -45,9 +45,7 @@ else
 endif
 syntax enable
 set background=dark
-"colorscheme solarized
-colorscheme mustang
-"colorscheme gruvbox
+colorscheme molokai
 if has('mouse')
   set mouse=a
 endif
@@ -107,7 +105,7 @@ function! FontAndBGToggle()
     if has("gui_running")
       set guifont=Source\ Code\ Pro\ Light:h12
 	endif
-    colorscheme mustang
+    colorscheme molokai
     set background=dark
   endif
 endfunction

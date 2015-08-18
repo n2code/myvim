@@ -3,7 +3,7 @@
 set nocompatible
 call pathogen#infect()
 
-" SYSTEM
+" VIM ECOSYSTEM
 set viminfo='100,/0,:20,<0,@0,s10,h,rA:,rB:
 set nobackup
 set noswapfile
@@ -13,8 +13,15 @@ set history=1337
 set autoread
 set hidden
 set autochdir
+if has("clipboard")
+	set clipboard=unnamed
+endif
+if has("unnamedplus")
+	set clipboard+=unnamed
+endif
 
-" TEXT BEHAVIOUR
+" EDITOR BEHAVIOUR
+syntax on
 set encoding=utf-8
 set ff=unix
 set ffs=unix,dos,mac
@@ -26,14 +33,27 @@ set linebreak
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set whichwrap=b,s,<,>
 set so=7
-
-" SEARCH
+set wildmenu
+set wildmode=longest:list,full
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" VISUAL
+" EDITOR DESIGN
+set title
+set number
+set ruler
+set showcmd
+set laststatus=2
+set cursorline
+set noerrorbells visualbell t_vb=
+set showmatch
+set mat=1
+autocmd GUIEnter * set visualbell t_vb=
+set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
+
+" TERMINAL DESIGN
 if has("gui_running")
   set term=xterm
   set guifont=Source\ Code\ Pro\ Light:h12
@@ -49,73 +69,11 @@ colorscheme molokai
 if has('mouse')
   set mouse=a
 endif
-set showmatch
-set mat=1
 
-" DESIGN
-set title
-set number
-set ruler
-set showcmd
-set laststatus=2
-set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
-set cursorline
-set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
-
-" AIRLINE PLUGIN EXTRAS
-let g:airline_detect_paste=1
-let g:airline_inactive_collapse=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#show_buffers=1
-let g:airline#extensions#tabline#show_tabs=1
-let g:airline#extensions#tabline#show_tab_type=1
-
-" CODE
-"syntax on
-if has("autocmd")
-  filetype plugin indent on
-  augroup vimrcEx
-  au!
-  autocmd BufReadPost * " Remember cursor position
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-  augroup END
-else
-  set autoindent
-endif
-
-" COMFORT
-function! GUIOptionsToggle()
-  if &guioptions=='i'
-    exec('set guioptions=imTrL')
-  else
-    exec('set guioptions=i')
-  endif
-endfunction
-function! FontAndBGToggle()
-  if &background=='dark'
-    if has("gui_running")
-      set guifont=Source\ Code\ Pro\ Semibold:h12
-	endif
-	colorscheme solarized
-    set background=light
-  else
-    if has("gui_running")
-      set guifont=Source\ Code\ Pro\ Light:h12
-	endif
-    colorscheme molokai
-    set background=dark
-  endif
-endfunction
+" BONUS MAPPINGS
 inoremap jk <Esc>
-map <F1> <Esc>:call GUIOptionsToggle()<cr>
-map <F2> <Esc>:call FontAndBGToggle()<cr>
 map <F3> <ESC>:set wrap!<RETURN>
 map <F5> <ESC>:NERDTreeToggle<RETURN>
-set wildmenu
-set wildmode=longest:list,full
 nnoremap <BS> <ESC>:noh<RETURN><ESC>
 nnoremap <TAB> <ESC>:CtrlPBuffer<RETURN>
 nnoremap <SPACE> <ESC>:CtrlPBufTagAll<RETURN>
@@ -123,5 +81,65 @@ nnoremap <LEFT> <ESC>:bp<RETURN>
 nnoremap <RIGHT> <ESC>:bn<RETURN>
 nnoremap <UP> <ESC><C-Y>
 nnoremap <DOWN> <ESC><C-E>
+
+" PLUGIN CONFIGURATIONS
+let g:airline_detect_paste=1
+let g:airline_inactive_collapse=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#show_buffers=1
+let g:airline#extensions#tabline#show_tabs=1
+let g:airline#extensions#tabline#show_tab_type=1
+let g:ctrlp_root_markers=.ctrlp_root
+
+" ADDITIONAL COMFORT
+
+" Distraction free gVim
+map <F1> <Esc>:call GUIOptionsToggle()<cr>
+function! GUIOptionsToggle()
+	if &guioptions=='i'
+		exec('set guioptions=imTrL')
+	else
+		exec('set guioptions=i')
+	endif
+endfunction
+
+" Light-dark-switch
+map <F2> <Esc>:call FontAndBGToggle()<cr>
+function! FontAndBGToggle()
+	if &background=='dark'
+		if has("gui_running")
+			set guifont=Source\ Code\ Pro\ Semibold:h12
+		endif
+		colorscheme solarized
+		set background=light
+	else
+		if has("gui_running")
+			set guifont=Source\ Code\ Pro\ Light:h12
+		endif
+		colorscheme molokai
+		set background=dark
+	endif
+endfunction
+
+" Enable Windows Copy-n-Paste, Control-Q is now block select
+map <C-V> "+gP
+cmap <C-V> <C-R>+
+vnoremap <C-X> "+x
+vnoremap <C-C> "+y
+noremap <C-Q> <C-V>
+
+" CODE
+if has("autocmd")
+	filetype plugin indent on
+	augroup vimrcEx
+		au!
+		autocmd BufReadPost * " Remember cursor position
+					\ if line("'\"") > 1 && line("'\"") <= line("$") |
+					\   exe "normal! g`\"" |
+					\ endif
+	augroup END
+else
+	set autoindent
+endif
 
 " EOF :)

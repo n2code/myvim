@@ -71,12 +71,14 @@ if has('mouse')
 endif
 
 " BONUS MAPPINGS
+let mapleader=","
 inoremap jk <Esc>
 map <F3> <ESC>:set wrap!<RETURN>
 map <F5> <ESC>:NERDTreeToggle<RETURN>
 nnoremap <BS> <ESC>:noh<RETURN><ESC>
 nnoremap <TAB> <ESC>:CtrlPBuffer<RETURN>
-nnoremap <SPACE> <ESC>:CtrlPBufTagAll<RETURN>
+nnoremap <S-TAB> <ESC>:CtrlPBufTagAll<RETURN>
+map <SPACE> <Plug>(easymotion-prefix)
 nnoremap <LEFT> <ESC>:bp<RETURN>
 nnoremap <RIGHT> <ESC>:bn<RETURN>
 nnoremap <UP> <ESC><C-Y>

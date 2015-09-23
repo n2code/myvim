@@ -91,7 +91,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=1
 let g:airline#extensions#tabline#show_tabs=1
 let g:airline#extensions#tabline#show_tab_type=1
-let g:ctrlp_root_markers=.ctrlp_root
+let g:ctrlp_root_markers=".ctrlp_root"
 
 " ADDITIONAL COMFORT
 
@@ -123,12 +123,12 @@ function! FontAndBGToggle()
 	endif
 endfunction
 
-" Enable Windows Copy-n-Paste, Control-Q is now block select
-map <C-V> "+gP
-cmap <C-V> <C-R>+
-vnoremap <C-X> "+x
-vnoremap <C-C> "+y
-noremap <C-Q> <C-V>
+"" Enable Windows Copy-n-Paste, Control-Q is now block select
+"map <C-V> "+gP
+"cmap <C-V> <C-R>+
+"vnoremap <C-X> "+x
+"vnoremap <C-C> "+y
+"noremap <C-Q> <C-V>
 
 " CODE
 if has("autocmd")

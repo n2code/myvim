@@ -56,7 +56,11 @@ set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"
 " TERMINAL DESIGN
 if has("gui_running")
   set term=xterm
-  set guifont=Source\ Code\ Pro\ Light:h12
+  if has("unix")
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
+  else
+    set guifont=Source\ Code\ Pro\ Light:h12
+  endif
   let g:airline_powerline_fonts = 1
   set guioptions=i
 else
@@ -110,13 +114,21 @@ map <F2> <Esc>:call FontAndBGToggle()<cr>
 function! FontAndBGToggle()
 	if &background=='dark'
 		if has("gui_running")
-			set guifont=Source\ Code\ Pro\ Semibold:h12
+			if has("unix")
+				set guifont=Source\ Code\ Pro\ for\ Powerline\ Semi-Bold\ 12
+			else
+				set guifont=Source\ Code\ Pro\ Semibold:h12
+			endif
 		endif
 		colorscheme solarized
 		set background=light
 	else
 		if has("gui_running")
-			set guifont=Source\ Code\ Pro\ Light:h12
+			if has("unix")
+				set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
+			else
+				set guifont=Source\ Code\ Pro\ Light:h12
+			endif
 		endif
 		colorscheme molokai
 		set background=dark

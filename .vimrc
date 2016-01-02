@@ -55,23 +55,23 @@ set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"
 
 " TERMINAL DESIGN
 if has("gui_running")
-  set term=xterm
-  if has("unix")
-    set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
-  else
-    set guifont=Source\ Code\ Pro\ Light:h12
-  endif
-  let g:airline_powerline_fonts = 1
-  set guioptions=i
+	set term=xterm
+	if has("unix")
+		set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
+	else
+		set guifont=Source\ Code\ Pro\ Light:h12
+	endif
+	let g:airline_powerline_fonts = 1
+	set guioptions=i
 else
-  set term=xterm-256
-  set t_Co=256
+	set term=xterm-256
+	set t_Co=256
 endif
 syntax enable
 set background=dark
 colorscheme molokai
 if has('mouse')
-  set mouse=a
+	set mouse=a
 endif
 
 " BONUS MAPPINGS

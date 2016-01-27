@@ -135,6 +135,12 @@ function! FontAndBGToggle()
 	endif
 endfunction
 
+map <F8> <Esc>:call RunMyCurrentFile()<cr>
+function! RunMyCurrentFile()
+	write
+	execute '!python %'
+endfunction
+
 "" Enable Windows Copy-n-Paste, Control-Q is now block select
 "map <C-V> "+gP
 "cmap <C-V> <C-R>+
@@ -155,5 +161,4 @@ if has("autocmd")
 else
 	set autoindent
 endif
-
 " EOF :)

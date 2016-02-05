@@ -30,7 +30,10 @@ set nowrap
 set textwidth=0
 set wrapmargin=0
 set linebreak
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=0
+set noexpandtab
 set whichwrap=b,s,<,>
 set so=7
 set wildmenu

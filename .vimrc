@@ -57,18 +57,24 @@ autocmd GUIEnter * set visualbell t_vb=
 set statusline=\ %F%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
 
 " TERMINAL DESIGN
-if has("gui_running")
-	set term=xterm
-	if has("unix")
-		set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
-	else
-		set guifont=Source\ Code\ Pro\ Light:h12
-	endif
-	let g:airline_powerline_fonts = 1
-	set guioptions=i
+if has("nvim")
+	set guifont=Consolas:h13
+	call rpcnotify(0, "Gui", "Option", "Tabline", 0)
+	call rpcnotify(0, "Gui", "Option", "Popupmenu", 0)
 else
-	set term=xterm-256
-	set t_Co=256
+	if has("gui_running")
+		set term=xterm
+		if has("unix")
+			set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
+		else
+			set guifont=Source\ Code\ Pro\ Light:h12
+		endif
+		let g:airline_powerline_fonts = 1
+		set guioptions=i
+	else
+		set term=xterm-256
+		set t_Co=256
+	endif
 endif
 syntax enable
 set background=dark

@@ -1,7 +1,6 @@
-" Meine VIM-Config :)
+" My VIM-Config :)
 
 set nocompatible
-call pathogen#infect()
 
 " VIM ECOSYSTEM
 set viminfo='100,/0,:20,<0,@0,s10,h,rA:,rB:
@@ -157,22 +156,9 @@ function! FontAndBGToggle()
 	endif
 endfunction
 
-map <F8> <Esc>:call RunMyCurrentFile()<cr>
-function! RunMyCurrentFile()
-	write
-	execute '!python %'
-endfunction
-
 function! FormatWithJsonTool() range
     execute a:firstline . "," . a:lastline . "!python -m json.tool"
 endfunction
-
-"" Enable Windows Copy-n-Paste, Control-Q is now block select
-"map <C-V> "+gP
-"cmap <C-V> <C-R>+
-"vnoremap <C-X> "+x
-"vnoremap <C-C> "+y
-"noremap <C-Q> <C-V>
 
 " CODE
 if has("autocmd")

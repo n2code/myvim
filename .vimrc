@@ -101,6 +101,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'commit': '8c533e34eacf310a0babbcdf6c512a08eb447389' }
 Plug 'junegunn/fzf.vim', { 'commit': '1fcdee55cc5975d67248b2f8ea5fbac9aa628b7c' }
 Plug 'jiangmiao/auto-pairs', { 'commit': '39f06b873a8449af8ff6a3eee716d3da14d63a76' }
+Plug 'altercation/vim-colors-solarized', { 'commit': '528a59f26d12278698bb946f8fb82a63711eec21' }
+Plug 'vim-airline/vim-airline', { 'commit': 'c7a633ce8f4547e680377efe8ea70493fcce1349' }
 call plug#end()
 
 " PLUGIN MAPPINGS

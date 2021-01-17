@@ -87,19 +87,23 @@ endif
 let mapleader=","
 inoremap jk <Esc>
 map <F3> <ESC>:set wrap!<RETURN>
-map <F5> <ESC>:NERDTreeToggle<RETURN>
 nnoremap <BS> <ESC>:noh<RETURN><ESC>
-nnoremap <TAB> <ESC>:CtrlPBuffer<RETURN>
-nnoremap <S-TAB> <ESC>:CtrlPBufTagAll<RETURN>
 nnoremap <LEFT> <ESC>:bp<RETURN>
 nnoremap <RIGHT> <ESC>:bn<RETURN>
 nnoremap <UP> <ESC><C-Y>
 nnoremap <DOWN> <ESC><C-E>
 
-
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'commit': '8c533e34eacf310a0babbcdf6c512a08eb447389' }
+Plug 'junegunn/fzf.vim', { 'commit': '1fcdee55cc5975d67248b2f8ea5fbac9aa628b7c' }
 call plug#end()
+
+" PLUGIN MAPPINGS
+nnoremap <C-P> <ESC>:FZF<RETURN>
+nnoremap <TAB> <ESC>:Buffers<RETURN>
+nnoremap <S-TAB> <ESC>:Tags<RETURN>
+map <F5> <ESC>:NERDTreeToggle<RETURN>
 
 " PLUGIN CONFIGURATIONS
 let g:airline_detect_paste=1

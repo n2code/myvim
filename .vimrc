@@ -97,6 +97,11 @@ nnoremap <RIGHT> <ESC>:bn<RETURN>
 nnoremap <UP> <ESC><C-Y>
 nnoremap <DOWN> <ESC><C-E>
 
+
+" PLUGINS
+call plug#begin('~/.vim/plugged')
+call plug#end()
+
 " PLUGIN CONFIGURATIONS
 let g:airline_detect_paste=1
 let g:airline_inactive_collapse=1

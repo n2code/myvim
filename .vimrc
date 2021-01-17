@@ -93,6 +93,9 @@ nnoremap <RIGHT> <ESC>:bn<RETURN>
 nnoremap <UP> <ESC><C-Y>
 nnoremap <DOWN> <ESC><C-E>
 
+" BONUS COMMANDS
+command! -range JsonFormatSelectedRange <line1>,<line2>call FormatWithJsonTool()
+
 " PLUGINS
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'commit': '8c533e34eacf310a0babbcdf6c512a08eb447389' }
@@ -156,6 +159,10 @@ map <F8> <Esc>:call RunMyCurrentFile()<cr>
 function! RunMyCurrentFile()
 	write
 	execute '!python %'
+endfunction
+
+function! FormatWithJsonTool() range
+    execute a:firstline . "," . a:lastline . "!python -m json.tool"
 endfunction
 
 "" Enable Windows Copy-n-Paste, Control-Q is now block select

@@ -106,16 +106,15 @@ call plug#end()
 nnoremap <C-P> <ESC>:FZF<RETURN>
 nnoremap <TAB> <ESC>:Buffers<RETURN>
 nnoremap <S-TAB> <ESC>:Tags<RETURN>
-map <F5> <ESC>:NERDTreeToggle<RETURN>
 
 " PLUGIN CONFIGURATIONS
+let g:netrw_liststyle = 3
 let g:airline_detect_paste=1
 let g:airline_inactive_collapse=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=1
 let g:airline#extensions#tabline#show_tabs=1
 let g:airline#extensions#tabline#show_tab_type=1
-let g:ctrlp_root_markers=".ctrlp_root"
 
 " ADDITIONAL COMFORT
 
